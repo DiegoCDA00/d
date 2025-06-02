@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Menu, X, FileQuestion, MonitorPlay, DollarSign, MessageSquare, Zap } from "lucide-react"; // Added Zap for Features
+import { Menu, X, FileQuestion, MonitorPlay, DollarSign, MessageSquare, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config";
 import { Link } from "react-router-dom";
@@ -33,28 +33,25 @@ const Navbar = () => {
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
         window.scrollTo({
-          top: targetElement.offsetTop - 80, 
+          top: targetElement.offsetTop - 80,
           behavior: 'smooth'
         });
       }
       setIsOpen(false);
-    } else if (!href.startsWith("http")) { 
+    } else if (!href.startsWith("http")) {
       setIsOpen(false);
     }
   };
-
 
   return (
     <motion.nav
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-black/80 backdrop-blur-md shadow-md" : "bg-transparent"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 px-4"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+      <div className={`container mx-auto floating-navbar transition-all duration-300 ${scrolled ? 'bg-black/80' : ''}`}>
+        <div className="flex items-center justify-between h-16 px-4">
           <div className="flex items-center">
             <Link to="/" className="flex items-center" onClick={(e) => handleNavClick(e, "/")}>
               <img src={siteConfig.logoUrl} alt={`${siteConfig.name} Logo`} className="h-10 w-auto" />
@@ -101,7 +98,7 @@ const Navbar = () => {
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
           transition={{ duration: 0.3 }}
-          className="md:hidden bg-black/95 backdrop-blur-md"
+          className="md:hidden bg-black/95 backdrop-blur-md mt-4 mx-4 rounded-xl border border-zerion-purple/20"
         >
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navItems.map((item) => (
